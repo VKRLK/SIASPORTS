@@ -1,15 +1,10 @@
 const { OpenAI } = require("openai");
-const express = require("express");
 const fs = require("fs");
+require("dotenv").config();
 
 const openai = new OpenAI({
-  apiKey: "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",
+  apiKey: process.env.OPEN_AI_API_KEY,
 });
-
-const app = express();
-app.use(express.json());
-
-const port = process.env.PORT || 5000;
 
 async function generateImage(prompt) {
   return await openai.images
@@ -41,7 +36,7 @@ const readline = require("readline").createInterface({
 });
 
 readline.question(
-  "Choose picture generating method (1 or 2): \n1) from text only\n2) from picture and text \n",
+  "Choose picture generating method (1 or 2): \n1) from text only\n2) With selected background \n",
   (method) => {
     switch (method) {
       case "1": {

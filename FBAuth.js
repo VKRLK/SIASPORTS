@@ -2,11 +2,11 @@ const express = require("express");
 const passport = require("passport");
 const FacebookStrategy = require("passport-facebook");
 const expressSession = require("express-session");
-
+require("dotenv").config();
 const app = express();
 
-const FACEBOOK_CLIENT_ID = "177640258699785";
-const FACEBOOK_CLIENT_SECRET = "3266117f8c45abbb494e38f1f430b8f9";
+const FACEBOOK_CLIENT_ID = process.env.FACEBOOK_CLIENT_ID;
+const FACEBOOK_CLIENT_SECRET = process.env.FACEBOOK_SECRET_KEY;
 
 passport.use(
   new FacebookStrategy(
